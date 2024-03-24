@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Movies</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            display: grid;
+            background-color: black;
+            grid-template-rows: 5rem calc(100vh - 5rem);
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        nav {
+            background-color: var(--black);
+            box-shadow: 0 0.8rem 2.4rem var(--shadow-color),
+                0 1.6rem 5.6rem var(--shadow-color), 0 2.4rem 8rem var(--shadow-color);
+            display: flex;
+            flex-flow: row nowrap;
+            grid-row: 1;
+            padding: var(--default-padding);
+            width: var(--full-w);
+
+            ul {
+                display: flex;
+                flex-flow: row nowrap;
+
+                &:nth-of-type(2) {
+                    align-items: center;
+                    gap: var(--default-padding);
+                    justify-content: center;
+                    width: var(--full-w);
+
+                    li {
+                        align-items: center;
+
+                        &:nth-child(-n + 3) {
+                            display: none;
+                            border-bottom: 0.4rem solid transparent;
+                            height: var(--full-h);
+                            padding: 0 var(--default-padding);
+                            transition: border var(--short-duration) ease-in;
+                        }
+
+                        &:first-of-type,
+                        &:last-of-type {
+                            margin-left: auto;
+                        }
+
+                        &:hover {
+                            border-color: var(--light-yellow);
+
+                            a {
+                                color: var(--yellow);
+                            }
+                        }
+                    }
+                }
+            }
+
+            svg {
+                width: calc(var(--logo-dimensions) / 2);
+            }
+
+            a {
+                transition: color var(--short-duration) ease-in;
+            }
+        }
+
+        .poster {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .movie-details {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgb(240, 240, 240);
+        }
+
+        .movie-details h1 {
+            color: #db0001;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        *::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: #db0001;
+            border-radius: 10px;
+            border: 3px solid #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="http://localhost:5000/" class="link">
+                    <img src="./images/logo1.png" alt="Logo" style="width:60px">
+                </a>
+            </li>
+        </ul>
+
+        <ul>
+            <!-- <li>
+            <a href="#" class="link"> Magazine </a>
+          </li>
+    
+          <li>
+            <a href="#" class="link"> TV </a>
+          </li>
+    
+          <li>
+            <a href="#" class="link"> Podcasts </a>
+          </li> -->
+
+            <li>
+                <a href="#search" class="cta"> Getting Started</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="<%= movieData.Poster %>" alt="Poster" class="img-fluid poster">
+            </div>
+            <div class="col-md-8 movie-details">
+                <h1>
+                    <%= movieData.Title %> (<%= movieData.Year %>)
+                </h1>
+                <p><strong>Rated:</strong>
+                    <%= movieData.Rated %>
+                </p>
+                <p><strong>Released:</strong>
+                    <%= movieData.Released %>
+                </p>
+                <p><strong>Runtime:</strong>
+                    <%= movieData.Runtime %>
+                </p>
+                <p><strong>Genre:</strong>
+                    <%= movieData.Genre %>
+                </p>
+                <p><strong>Director:</strong>
+                    <%= movieData.Director %>
+                </p>
+                <p><strong>Writer:</strong>
+                    <%= movieData.Writer %>
+                </p>
+                <p><strong>Actors:</strong>
+                    <%= movieData.Actors %>
+                </p>
+                <p><strong>Plot:</strong>
+                    <%= movieData.Plot %>
+                </p>
+                <p><strong>Language:</strong>
+                    <%= movieData.Language %>
+                </p>
+                <p><strong>Country:</strong>
+                    <%= movieData.Country %>
+                </p>
+                <p><strong>Awards:</strong>
+                    <%= movieData.Awards %>
+                </p>
+                <p><strong>IMDB Rating:</strong>
+                    <%= movieData.imdbRating %> (<%= movieData.imdbVotes %> votes)
+                </p>
+                <p><strong>Type:</strong>
+                    <%= movieData.Type %>
+                </p>
+                <p><strong>Total Seasons:</strong>
+                    <%= movieData.totalSeasons || 'Information not available' %>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
